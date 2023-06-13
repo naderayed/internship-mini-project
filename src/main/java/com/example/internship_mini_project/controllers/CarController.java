@@ -1,6 +1,6 @@
 package com.example.internship_mini_project.controllers;
 
-import com.example.internship_mini_project.entities.Car;
+import com.example.internship_mini_project.entities.dtos.CarDTO;
 import com.example.internship_mini_project.services.inerfaces.ICarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,14 +12,14 @@ public class CarController {
 
     private final ICarService iCarService;
 
-
     @PostMapping("addCar")
-    public ResponseEntity<Car> addCar(@RequestBody Car car) throws ClassNotFoundException {
-        return ResponseEntity.ok(iCarService.addCar(car));
+    public ResponseEntity<String> addCar(@RequestBody CarDTO car) throws ClassNotFoundException {
+        iCarService.addCar(car);
+        return ResponseEntity.ok("car added successfully");
     }
 
     @GetMapping("getCar")
-    public ResponseEntity<Car> getCar(@RequestParam long idCar) throws ClassNotFoundException {
+    public ResponseEntity<CarDTO> getCar(@RequestParam long idCar) throws ClassNotFoundException {
         return ResponseEntity.ok(iCarService.getCar(idCar));
     }
 
