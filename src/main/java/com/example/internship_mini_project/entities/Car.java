@@ -14,7 +14,6 @@ import java.util.Date;
 @EqualsAndHashCode
 @Entity
 public class Car {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idCar;
